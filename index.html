@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quản lý học viện nghiên cứu & giảng dạy</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Quản lý học viện nghiên cứu & giảng dạy</h1>
+            <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-render"
+                id="add-user-toggle-modal"
+                onclick="handleShowModal()"
+            >
+                Thêm Người Dùng
+            </button>
+            <div class="dashboard">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex justify-content-between align-content-center"
+                                >
+                                    <h5 class="card-title" style="width: 90%">
+                                        Người dùng
+                                    </h5>
+                                    <select
+                                        style="width: 10%"
+                                        name=""
+                                        id="select-xap-xep"
+                                        class="form-control"
+                                    >
+                                        <option value="all">Tất Cả</option>
+                                        <option value="student">Student</option>
+                                        <option value="employee">
+                                            Employee
+                                        </option>
+                                        <option value="customer">
+                                            Customer
+                                        </option>
+                                    </select>
+                                    <select
+                                        style="width: 10%"
+                                        name=""
+                                        id="select-xap-xep-name"
+                                        class="form-control ms-2"
+                                    >
+                                        <option value="all">
+                                            Sắp Xếp Không Theo Tên
+                                        </option>
+                                        <option value="name">
+                                            Xắp Xếp Theo Tên
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="py-3">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Mã Số</th>
+                                                <th scope="col">Loại</th>
+                                                <th scope="col">Họ Và Tên</th>
+                                                <th scope="col">Địa Chỉ</th>
+                                                <th scope="col">email</th>
+                                                <th scope="col">Lương</th>
+                                                <th scope="col">
+                                                    Điểm Trung Bình
+                                                </th>
+                                                <th scope="col">Công Ty</th>
+                                                <th scope="col">
+                                                    Giá Trị Hóa Đơn
+                                                </th>
+                                                <th scope="col">Đánh Giá</th>
+                                                <th scope="col">Hành Động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="t-body-render-data">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>
+                                                    <button
+                                                        class="btn btn-danger"
+                                                    >
+                                                        <i
+                                                            class="fa-solid fa-trash"
+                                                        ></i>
+                                                    </button>
+                                                    <button
+                                                        class="btn btn-primary mx-2"
+                                                    >
+                                                        <i
+                                                            class="fa-solid fa-pen-to-square"
+                                                        ></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="modal-render"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+            data-edit="false"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title-id">
+                            Thêm Người Dùng
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body" id="modal-render-body"></div>
+                </div>
+            </div>
+        </div>
+        <script src="./controller/main.js"></script>
+        <script src="./controller/web.js" type="module"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
